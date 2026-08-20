@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Home Sweet Cookies — warm, nostalgic cookies and milk that taste like home." />
+  <title>Home Sweet Cookies | Tastes Like Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #9fbdd6;
+      --blue-dark: #567995;
+      --blue-light: #eaf3f8;
+      --cream: #fffaf3;
+      --white: #ffffff;
+      --brown: #6d4d3c;
+      --brown-soft: #9b7866;
+      --ink: #2d3a43;
+      --line: #d8e6ef;
+      --shadow: 0 16px 40px rgba(60, 93, 117, 0.12);
+      --radius: 26px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      background: var(--blue-dark);
+      color: white;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 0.9rem;
+      letter-spacing: .02em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 250, 243, 0.92);
+      border-bottom: 1px solid rgba(159, 189, 214, .35);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Playfair Display", serif;
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: 1.35rem;
+    }
+
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      background: var(--blue);
+      border-radius: 50% 50% 44% 44%;
+      position: relative;
+      box-shadow: inset 0 -6px 0 rgba(255,255,255,.18);
+    }
+
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      background: #fffaf3;
+      border-radius: 50%;
+    }
+
+    .logo-mark::before {
+      width: 7px; height: 7px;
+      left: 13px; top: 14px;
+      box-shadow: 14px 7px 0 #fffaf3, 3px 16px 0 #fffaf3;
+    }
+
+    .logo-mark::after {
+      width: 15px; height: 15px;
+      right: -2px; top: -2px;
+      background: var(--cream);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: var(--blue-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 22px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: .2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--blue-dark);
+      box-shadow: 0 10px 25px rgba(86, 121, 149, .2);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); background: #466b88; }
+
+    .btn-secondary {
+      background: white;
+      border-color: var(--line);
+      color: var(--blue-dark);
+    }
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(159,189,214,.35), transparent 30%),
+        radial-gradient(circle at 18% 92%, rgba(159,189,214,.22), transparent 24%),
+        var(--cream);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 58px;
+      align-items: center;
+      padding: 76px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      line-height: 1.08;
+      margin-top: 0;
+      color: var(--blue-dark);
+    }
+
+    h1 {
+      font-size: clamp(3.3rem, 7vw, 6.6rem);
+      margin: 20px 0 20px;
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 590px;
+      color: #52616b;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      font-size: .9rem !important;
+      color: var(--brown-soft) !important;
+    }
+
+    .hero-art {
+      min-height: 510px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .plate {
+      width: min(470px, 85vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: relative;
+      border: 16px solid #eef6fa;
+    }
+
+    .cookie {
+      width: 46%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: absolute;
+      background:
+        radial-gradient(circle at 27% 27%, #5a372a 0 4%, transparent 4.6%),
+        radial-gradient(circle at 63% 22%, #5a372a 0 4%, transparent 4.6%),
+        radial-gradient(circle at 71% 58%, #5a372a 0 4%, transparent 4.6%),
+        radial-gradient(circle at 37% 67%, #5a372a 0 4%, transparent 4.6%),
+        radial-gradient(circle at 48% 44%, #5a372a 0 3.6%, transparent 4.2%),
+        #c99662;
+      box-shadow: inset -12px -15px 0 rgba(101, 60, 35, .09), 0 12px 24px rgba(83, 57, 45, .15);
+    }
+
+    .cookie.one { left: 11%; top: 30%; transform: rotate(-13deg); }
+    .cookie.two { right: 9%; top: 14%; transform: scale(.88) rotate(11deg); }
+    .cookie.three { right: 20%; bottom: 7%; transform: scale(.72) rotate(-4deg); }
+
+    .milk {
+      position: absolute;
+      width: 125px;
+      height: 235px;
+      right: -22px;
+      bottom: 2px;
+      border-radius: 26px 26px 22px 22px;
+      background: linear-gradient(#fff 0 18%, #f3f8fb 18% 100%);
+      border: 5px solid #fff;
+      box-shadow: var(--shadow);
+      transform: rotate(5deg);
+    }
+
+    .milk::before {
+      content: "HOME\A SWEET\A COOKIES";
+      white-space: pre;
+      position: absolute;
+      inset: 42% 12px auto;
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--blue-dark);
+      font-size: .8rem;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-blue { background: var(--blue-light); }
+    .section-white { background: white; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      margin-bottom: 8px;
+    }
+
+    .section-head p { max-width: 590px; color: #63727c; margin: 0; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(80, 111, 130, .07);
+    }
+
+    .cookie-visual {
+      aspect-ratio: 1.15;
+      background: linear-gradient(145deg, #f9f2e9, #f2e4d6);
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .mini-cookie {
+      width: 52%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #c78f59;
+      box-shadow: inset -8px -10px rgba(106, 69, 40, .09), 0 12px 28px rgba(85,58,35,.12);
+      position: relative;
+    }
+
+    .mini-cookie::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 25% 26%, #5d3a2b 0 4%, transparent 4.5%),
+        radial-gradient(circle at 68% 25%, #5d3a2b 0 4%, transparent 4.5%),
+        radial-gradient(circle at 61% 67%, #5d3a2b 0 4%, transparent 4.5%),
+        radial-gradient(circle at 34% 62%, #5d3a2b 0 4%, transparent 4.5%);
+    }
+
+    .cookie-visual.cream .mini-cookie { background: #d7b38b; }
+    .cookie-visual.dark .mini-cookie { background: #6f4736; }
+    .cookie-visual.pink .mini-cookie { background: #d9a0a4; }
+    .cookie-visual.gold .mini-cookie { background: #c59a5f; }
+
+    .card-body { padding: 22px; }
+    .card h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .card p { margin: 0; color: #687780; font-size: .93rem; }
+    .price {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+
+    .milk-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .milk-card {
+      border-radius: var(--radius);
+      padding: 30px;
+      background: var(--cream);
+      border: 1px solid #eadfd5;
+      min-height: 220px;
+    }
+
+    .milk-card .cup {
+      height: 90px;
+      width: 64px;
+      border: 3px solid var(--blue);
+      border-radius: 12px 12px 18px 18px;
+      margin-bottom: 22px;
+      position: relative;
+      background: rgba(255,255,255,.7);
+    }
+
+    .milk-card .cup::after {
+      content: "";
+      position: absolute;
+      left: 8px; right: 8px; bottom: 8px;
+      height: 56px;
+      border-radius: 8px 8px 12px 12px;
+      background: var(--milk-color, #f4f4ee);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .story-panel {
+      min-height: 470px;
+      border-radius: 38px;
+      background:
+        linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.15)),
+        var(--blue);
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-panel::before {
+      content: "";
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      position: absolute;
+      top: -60px; right: -40px;
+    }
+
+    .story-panel strong {
+      font-family: "Playfair Display", serif;
+      font-size: 3rem;
+      line-height: 1;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .story-copy h2 { font-size: clamp(2.6rem, 5vw, 4.7rem); }
+    .story-copy p { color: #66747c; font-size: 1.05rem; }
+
+    .order-box {
+      background: var(--blue-dark);
+      color: white;
+      border-radius: 38px;
+      padding: 54px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .order-box h2 { color: white; font-size: clamp(2.2rem, 4vw, 3.8rem); margin-bottom: 10px; }
+    .order-box p { margin: 0; color: rgba(255,255,255,.82); }
+    .order-box .btn { background: white; color: var(--blue-dark); min-width: 155px; }
+
+    footer {
+      padding: 48px 0;
+      background: #f4eee7;
+      color: #67747b;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h4 { color: var(--blue-dark); margin: 0 0 12px; }
+    footer p { margin: 5px 0; }
+    .tiny { font-size: .83rem; margin-top: 28px; opacity: .8; }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 1.8rem;
+      color: var(--blue-dark);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .story-grid, .order-box { grid-template-columns: 1fr; }
+      .hero-art { min-height: 430px; }
+      .menu-grid, .milk-grid { grid-template-columns: repeat(2, 1fr); }
+      .order-box { text-align: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 20px; right: 20px; top: 78px;
+        background: var(--cream);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+      }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: block; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .hero { min-height: auto; }
+      .hero-grid { padding: 54px 0 62px; gap: 22px; }
+      h1 { font-size: 3.65rem; }
+      .hero-art { min-height: 340px; }
+      .milk { width: 98px; height: 190px; right: -6px; }
+      .section { padding: 68px 0; }
+      .section-head { display: block; }
+      .menu-grid, .milk-grid, .footer-grid { grid-template-columns: 1fr; }
+      .order-box { padding: 38px 24px; }
+      .story-panel { min-height: 380px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Freshly baked • Small-batch cookies • Houston, Texas</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Home Sweet Cookies home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>Home Sweet Cookies</span>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#menu">Cookies</a>
+        <a href="#milk">Milk Bar</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+        <!-- Replace #order with your Square/Toast/Shopify ordering link -->
+        <a class="btn btn-primary" href="#order">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Fresh from our kitchen</span>
+          <h1>Tastes<br>Like Home.</h1>
+          <p>
+            Soft-centered, bakery-style cookies made for slow mornings, celebrations,
+            late-night cravings, and every sweet moment in between.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">Explore the Menu</a>
+            <a class="btn btn-secondary" href="#order">Order Online</a>
+          </div>
+          <p class="hero-note">Cookies baked in small batches for that just-made feeling.</p>
+        </div>
+
+        <div class="hero-art" aria-label="Illustration of cookies and milk">
+          <div class="plate">
+            <div class="cookie one"></div>
+            <div class="cookie two"></div>
+            <div class="cookie three"></div>
+            <div class="milk"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">The Cookie Counter</span>
+            <h2>Pick your favorite.</h2>
+          </div>
+          <p>
+            A rotating collection of nostalgic favorites and indulgent bakery-style cookies.
+            Update the prices below to match your final menu.
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="card">
+            <div class="cookie-visual"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>The Home Sweet</h3>
+              <p>Our signature chocolate chip cookie with a soft center and golden edges.</p>
+              <span class="price">$4.50</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual cream"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Sunday Morning</h3>
+              <p>Warm cinnamon-inspired comfort with a sweet, cozy finish.</p>
+              <span class="price">$4.75</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual dark"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Cookies & Cream</h3>
+              <p>Chocolate cookie pieces folded into a rich cream-filled cookie.</p>
+              <span class="price">$4.75</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual pink"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Birthday at Home</h3>
+              <p>Celebration cake flavor, colorful sprinkles, and plenty of nostalgia.</p>
+              <span class="price">$4.75</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual pink"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Strawberry Shortcake</h3>
+              <p>Sweet strawberry notes with creamy shortcake-inspired richness.</p>
+              <span class="price">$5.00</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual gold"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Dulce de Leche</h3>
+              <p>Caramelized milk sweetness with a soft, decadent center.</p>
+              <span class="price">$5.00</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual gold"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Cookie Butter</h3>
+              <p>Spiced cookie butter flavor in a rich bakery-style cookie.</p>
+              <span class="price">$5.00</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cookie-visual dark"><div class="mini-cookie"></div></div>
+            <div class="card-body">
+              <h3>Chocolate Overload</h3>
+              <p>Deep chocolate cookie loaded with even more chocolate in every bite.</p>
+              <span class="price">$5.00</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="milk">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">The Milk Bar</span>
+            <h2>Cookies need milk.</h2>
+          </div>
+          <p>Serve these in your branded 16 oz cups. Prices below are editable placeholders.</p>
+        </div>
+
+        <div class="milk-grid">
+          <article class="milk-card" style="--milk-color:#f4f2e8">
+            <div class="cup"></div>
+            <h3>Classic Milk</h3>
+            <p>Cold, simple, and made for dunking.</p>
+            <span class="price">$3.50</span>
+          </article>
+
+          <article class="milk-card" style="--milk-color:#ead8bf">
+            <div class="cup"></div>
+            <h3>Vanilla Milk</h3>
+            <p>Sweet vanilla flavor with a creamy finish.</p>
+            <span class="price">$4.25</span>
+          </article>
+
+          <article class="milk-card" style="--milk-color:#b88972">
+            <div class="cup"></div>
+            <h3>Chocolate Milk</h3>
+            <p>Rich chocolate milk served ice cold.</p>
+            <span class="price">$4.25</span>
+          </article>
+
+          <article class="milk-card" style="--milk-color:#edc7ca">
+            <div class="cup"></div>
+            <h3>Strawberry Milk</h3>
+            <p>A nostalgic strawberry favorite with a soft pink finish.</p>
+            <span class="price">$4.25</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="container story-grid">
+        <div class="story-panel">
+          <strong>Made for moments that feel like home.</strong>
+        </div>
+        <div class="story-copy">
+          <span class="eyebrow">Our Story</span>
+          <h2>Warm, familiar, unforgettable.</h2>
+          <p>
+            Home Sweet Cookies was created around a simple idea: the best desserts feel familiar.
+            Every cookie is designed to be generous, comforting, and memorable — the kind of treat
+            you bring home to share, gift to someone you love, or keep all to yourself.
+          </p>
+          <p>
+            Our soft blue palette, classic flavors, and milk-bar pairings bring an elevated,
+            nostalgic bakery experience to every order.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="order">
+      <div class="container">
+        <div class="order-box">
+          <div>
+            <h2>Ready for something sweet?</h2>
+            <p>Connect this button to your Square, Toast, Shopify, or other ordering page.</p>
+          </div>
+          <!-- Replace href below with your real ordering URL -->
+          <a class="btn" href="https://squareup.com/" target="_blank" rel="noopener noreferrer">Order Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>Home Sweet Cookies</span>
+          </div>
+          <p>Tastes Like Home.</p>
+        </div>
+        <div>
+          <h4>Visit / Pickup</h4>
+          <p>Houston, Texas</p>
+          <p>Add pickup details here</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>hello@homesweetcookies.com</p>
+          <p>@homesweetcookies</p>
+        </div>
+      </div>
+      <p class="tiny">© <span id="year"></span> Home Sweet Cookies. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("open");
+    }
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("open");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
